@@ -1,0 +1,37 @@
+.all-attributes-main {
+    position: absolute;
+    top: 8vh;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 7.5vw;
+}
+.all-attributes-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.all-attributes-msg div{
+    height: 5vh;
+    line-height: 5vh;
+    width: 36vw;
+    border: 2px solid #e0d8d8;;
+    border-radius: 1vw;
+    font-size: 1.5rem;
+    margin-right: 2vw;
+    margin-bottom: 1vh;
+}
+.all-attributes-msg {
+    margin-top: 3vh;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+.all-attributes-msg div img{
+    width: 5vw;
+    height: 5vw;
+    display: -webkit-inline-box;
+    margin: auto 1vw;
+}
+.attributes-color {
+    color: red;
+}

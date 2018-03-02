@@ -1,0 +1,209 @@
+.sale-sireOrSell-container {
+    position: absolute;
+    top: 10vh;
+    bottom: 0;
+    width: 85vw;
+    margin: 0vh 4vh;
+}
+
+.sale-sireOrSell-container .sire-title {
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 3vh;
+    font-weight: bold;
+}
+
+.sale-sireOrSell-container .sire-small-title {
+    margin-bottom: 4vh;
+    height: 7vh;
+    display: flex;
+}
+
+.sale-sireOrSell-container .sire-small-title .title-left,
+.title-right {
+    flex: 1;
+}
+
+.sale-sireOrSell-container .sire-small-title .sire-to-public {
+    font-size: 1.5rem;
+    padding: 2vh 0;
+    width: 120px;
+    margin: 0 auto;
+}
+
+.sale-sireOrSell-container .sire-small-title .sire-with-ownKitties {
+    font-size: 1.5rem;
+    padding: 2vh 0;
+    width: 137px;
+    margin: 0 auto;
+}
+
+.sale-sire-selected {
+    font-weight: bold;
+    border-bottom: 2px solid red;
+}
+
+.sale-sireOrSell-container .sale-sire-content {}
+
+.sale-sireOrSell-container .sale-sire-content .start-content {
+    margin-left: 3vw;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.sale-sireOrSell-container .sale-sire-content .middle-content {
+    font-size: 1.4rem;
+    line-height: 3vh;
+    color: #3e3e3e;
+}
+
+.sale-sireOrSell-container .price-content {
+    margin-top: 3vh;
+}
+
+.sale-sireOrSell-container .price-content p {
+    font-size: 1.4rem;
+    line-height: 3vh;
+    color: #3e3e3e;
+    text-indent: 3vw;
+}
+
+.sale-sireOrSell-container .setting-price {}
+
+.sale-sireOrSell-container .setting-price .setting-starting-price {
+    margin-top: 2vh;
+    display: flex;
+    height: 10vw;
+    line-height: 10vw;
+    border-bottom: 1px solid #9c9c9b;
+}
+
+.sale-sireOrSell-container .setting-price .setting-starting-price .setting-starting-price-text {
+    flex: 50%;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.sale-sireOrSell-container .setting-price .setting-starting-price .setting-starting-price-input {
+    flex: 13%;
+    width: 13vw;
+    display: flex;
+}
+
+.sale-sireOrSell-container .setting-price .setting-starting-price .setting-starting-price-input span {
+    flex: 1;
+}
+
+.sale-sireOrSell-container .setting-price .setting-starting-price .setting-starting-price-input input {
+    width: 15vw;
+    height: 6vw;
+    line-height: 6vw;
+    font-size: 1.4rem;
+    flex: 1;
+    margin: 1vw 0;
+}
+
+.sale-sireOrSell-container .setting-price .setting-end-price {
+    margin-top: 2vh;
+    display: flex;
+    height: 10vw;
+    line-height: 10vw;
+    border-bottom: 1px solid #9c9c9b;
+}
+
+.sale-sireOrSell-container .setting-price .setting-end-price .setting-end-price-text {
+    flex: 50%;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.sale-sireOrSell-container .setting-price .setting-end-price .setting-end-price-input {
+    flex: 13%;
+    width: 13vw;
+    display: flex;
+}
+
+.sale-sireOrSell-container .setting-price .setting-end-price .setting-end-price-input span {
+    flex: 1;
+}
+
+.sale-sireOrSell-container .setting-price .setting-end-price .setting-end-price-input input {
+    width: 15vw;
+    height: 6vw;
+    line-height: 6vw;
+    font-size: 1.4rem;
+    flex: 1;
+    margin: 1vw 0;
+}
+
+.sale-sireOrSell-container .setting-price .setting-duration {
+    margin-top: 2vh;
+    display: flex;
+    height: 10vw;
+    line-height: 10vw;
+    border-bottom: 1px solid #9c9c9b;
+}
+
+.sale-sireOrSell-container .setting-price .setting-duration .setting-duration-text {
+    flex: 50%;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.sale-sireOrSell-container .setting-price .setting-duration .setting-duration-input {
+    flex: 13%;
+    width: 13vw;
+    display: flex;
+}
+
+.sale-sireOrSell-container .setting-price .setting-duration .setting-duration-input span {
+    font-size: 1.4rem;
+    flex: 1;
+}
+
+.sale-sireOrSell-container .setting-price .setting-duration .setting-duration-input input {
+    width: 15vw;
+    height: 6vw;
+    line-height: 6vw;
+    margin: 1vw 0;
+    font-size: 1.4rem;
+    flex: 1;
+}
+
+.sale-sireOrSell-container .setting-price .finish-setting-button {}
+
+.sale-sireOrSell-container .setting-price .finish-setting-button .setting-button {
+    height: 10vw;
+    line-height: 10vw;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 1px solid #9c9c9b;
+    text-align: center;
+    margin: 4vh auto;
+}
+
+.my-kitties-choose {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1vh;
+}
+
+.choose-kitty-text {
+    font-size: 1.5rem;
+    margin-right: 1vh;
+}
+
+.choose-kitty-input select {
+    font-size: 1.2rem;
+    width: 50vw;
+    padding: 1vh 1vw;
+    border: 1px solid #9c9c9b;
+}
+
+.choose-kitty-input select option {
+    font-size: 1.2rem;
+    width: 50vw;
+    padding: 1vh 1vw;
+}

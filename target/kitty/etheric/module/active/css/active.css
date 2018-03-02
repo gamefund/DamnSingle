@@ -1,0 +1,59 @@
+    .active-main {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1vh 7.5vw;
+        overflow-x: none;
+        overflow-y: auto;
+    }
+
+    .active-title {
+        height: 6vh;
+        line-height: 6vh;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-top: 10vh;
+    }
+
+    .active-title-msg {
+        font-size: 1.5rem;
+        margin-top: 2vh;
+    }
+
+    .active-body-part {
+        display: -webkit-flex;
+        display: flex;
+        height: 12vh;
+    }
+
+    .active-type-img {
+        width: 20vw;
+        height: 8vw;
+        margin: auto;
+        flex: 18%;
+    }
+
+    .active-part-body {
+        margin: auto 0vw;
+        flex: 62%;
+    }
+
+    .active-part-next {
+        margin: auto;
+        border: 1px solid #afa9a9;
+        border-radius: 1vw;
+        flex: 14%;
+        height: 3vh;
+        line-height: 3vh;
+        text-align: center;
+    }
+
+    .active-chose-page {
+        width: 85%;
+        bottom: 0;
+        position: fixed;
+        background-color: white;
+        height: 18vw;
+    }

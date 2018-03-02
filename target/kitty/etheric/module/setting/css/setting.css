@@ -1,0 +1,119 @@
+
+.setting-container{
+    position: absolute;
+    top: 10vh;
+    bottom: 0;
+    margin: 0 10vw;
+}
+
+.setting-title{
+    margin-top: 5vh;
+}
+.setting-title-text1{
+    text-align: center;
+    font-size: 2.0rem;
+    font-weight: bold;
+}
+.setting-title-text2{
+    margin-top: 2vh;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.setting-content{
+    margin-top: 5vh;
+    -webkit-user-select: auto;
+}
+
+.setting-img{
+    text-align: center;
+}
+
+.setting-img img{
+    width: 15vw;
+    height: 15vw;
+}
+
+.setting-content  .setting-address{
+    margin-top: 3vh;
+}
+
+.setting-address-text{
+    flex: 50%;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.setting-address-input input{
+    margin-top: 1.5vh;
+    width: 76vw;
+    height: 4vh;
+    padding: 0 2vw;
+    font-size: 1.4rem;
+    border: 1px solid #c3bfbf;
+    outline: none;
+}
+
+.setting-content  .setting-email{
+    margin-top: 3vh;
+}
+.setting-email-text{
+    flex: 50%;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.setting-email-input input{
+    margin-top: 1.5vh;
+    width: 76vw;
+    height: 4vh;
+    padding: 0 2vw;
+    font-size: 1.4rem;
+    border: 1px solid #c3bfbf;
+    outline: none;
+}
+
+.setting-content  .setting-nickname{
+    margin-top: 3vh;
+}
+.setting-nickname-text{
+    flex: 50%;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.setting-nickname-input input{
+    margin-top: 1.5vh;
+    width: 76vw;
+    height: 4vh;
+    padding: 0 2vw;
+    font-size: 1.4rem;
+    border: 1px solid #c3bfbf;
+    outline: none;
+}
+
+.setting-warning{
+    margin-top: 5vh;
+}
+
+.setting-warning-text{
+    width: 76vw;
+    font-size: 1.4rem;
+    border: 1px solid #c52fc1;
+    padding: 1vh 2vw;
+    text-align: center;
+    color: #c52fc1;
+    background-color: #fbe2fb;
+}
+
+.setting-button{
+    font-size: 1.5rem;
+    width: 35vw;
+    height: 5vh;
+    border: 2px solid #3a3535;
+    background-color: #c52fc1;
+    color: white;
+    text-align: center;
+    line-height: 5vh;
+    margin-bottom: 5vh;
+}

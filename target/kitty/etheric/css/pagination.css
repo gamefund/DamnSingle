@@ -1,0 +1,93 @@
+@charset "UTF-8";
+.demo-image{
+    width: 100%;
+}
+.M-box,.M-box1,.M-box2,.M-box3,.M-box4{
+    position: relative;
+    text-align: center;
+    zoom: 1;
+    padding: 0;
+    margin: 5vw 0;
+}
+.M-box:before,.M-box:after,.M-box1:before,.M-box1:after ,.M-box2:before,.M-box2:after ,.M-box3:before,.M-box3:after,.M-box4:before,.M-box4:after{
+    content:"";
+    display:table;
+}
+.M-box:after,.M-box1:after,.M-box2:after,.M-box3:after,.M-box4:after{
+    clear:both;
+    overflow:hidden;
+}
+.M-box span,.M-box1 span,.M-box2 span,.M-box3 span,.M-box4 span{
+    float: left;
+    margin:0 0.8vw;
+    width: 7.4vw;
+    height: 7.4vw;
+    line-height: 7.4vw;
+    color: #e91e63;
+    font-size: 14px;
+    font-weight: bold;
+}
+.M-box .active,.M-box1 .active,.M-box2 .active,.M-box3 .active,.M-box4 .active{
+    float: left;
+    margin:0 0.8vw;
+    width: 7.4vw;
+    height: 7.4vw;
+    line-height: 7.4vw;
+    background: #e91e63;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #e91e63;
+}
+.M-box a,.M-box1 a,.M-box2 a,.M-box3 a,.M-box4 a{
+    float: left;
+    margin:0 0.8vw;
+    width: 7.4vw;
+    height: 7.4vw;
+    line-height: 7.4vw;
+    background: #fff;
+    /*border: 1px solid #ebebeb;*/
+    border: 1px solid #bdbdbd;
+    color: #e91e63;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.M-box a:hover,.M-box1 a:hover,.M-box2 a:hover,.M-box3 a:hover,.M-box4 a:hover{
+    color:#fff;
+    background: #e91e63;
+}
+.M-box .next,.M-box .prev,.M-box1 .next,.M-box1 .prev{
+    font-family: "Simsun";
+    font-size: 16px;
+    font-weight: bold;
+}
+.M-box .prev{
+    margin-left: 0;
+}
+.M-box .next{
+    margin-right: 0;
+}
+.M-box .now,.count{
+    padding:0 0.8vw;
+    color:#f00;
+}
+.M-box .eg img{
+    max-width: 800px;
+    min-height: 500px;
+}
+.M-box input{
+    float: left;
+    margin:0 0.8vw;
+    width: 7.4vw;
+    height: 7.4vw;
+    line-height: 7.4vw;
+    text-align: center;
+    background: #fff;
+    /*border: 1px solid #ebebeb;*/
+    border: 1px solid #bdbdbd;
+    outline: none;
+    color: #e91e63;
+    font-size: 14px;
+    font-weight: bold;
+}

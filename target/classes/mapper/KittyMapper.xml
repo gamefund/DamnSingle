@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.c2engine.kitty.dao.KittyMapper">
+
+    <select id="getKittyTradeDetail" parameterType="long" resultType="java.util.Map">
+        SELECT
+        seller_id, kitty_id, type, start_time, end_time, duration, start_price, end_price
+        FROM
+        trade
+        WHERE
+        kitty_id = #{kittyId};
+    </select>
+
+    <select id="getKittyDetail" parameterType="long" resultType="java.util.Map">
+        SELECT
+        id, name, generation, created_at, image_url, color, is_fancy, is_exclusive, owner_id, fancy_type, sire_id,
+        matron_id,
+        is_ready, is_gestating, cooldown, cooldown_index, purr_count, bio
+        FROM
+        kitty
+        WHERE id = #{kitty_id}
+    </select>
+
+    <select id="getKittyUserDetail" parameterType="long" resultType="java.util.Map">
+        SELECT
+        address, nickname, image
+        FROM
+        user
+        WHERE
+        id = #{sellerId};
+    </select>
+
+    <select id="getKittyFatherDetail" parameterType="long" resultType="java.util.Map">
+        SELECT
+        id, name, image_url, color
+        FROM
+        kitty
+        WHERE
+        id = #{sire_id};
+    </select>
+
+    <select id="getKittyMotherDetail" parameterType="long" resultType="java.util.Map">
+        SELECT
+        id, name, image_url, color
+        FROM
+        kitty
+        WHERE
+        id = #{matron_id};
+    </select>
+
+    <select id="getKittyChildrenDetail" parameterType="long" resultType="java.util.Map">
+        SELECT
+        id, name, image_url, color
+        FROM
+        kitty
+        WHERE
+        matron_id = #{kittyId} OR sire_id = #{kittyId};
+    </select>
+
+    <select id="getKittyCattributesDetail" parameterType="long" resultType="java.util.Map">
+        SELECT
+        kitty_id, fancy_type, attr_1, attr_2, attr_3, attr_4, attr_5, attr_6, attr_7, attr_8
+        FROM
+        attribute
+        WHERE
+        kitty_id = #{kittyId};
+    </select>
+
+    <select id="getKittyCooldown" resultType="java.util.Map" parameterType="long">
+        SELECT time from transaction_record WHERE kitty_id = #{kitty_id} AND type = 2 ORDER BY TIME DESC limit 1
+    </select>
+</mapper>

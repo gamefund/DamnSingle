@@ -1,0 +1,103 @@
+#wait_alert{
+	position: fixed;
+	left:0;
+	top:0;
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#wait_alert .alert-box {
+	width: 26vh;
+    height: 14vh;
+    position: absolute;
+    top: 41vh;
+    left: 50%;
+    margin-left: -13vh;
+    background: rgba(255, 255, 0, 0.5);
+    text-align: center;
+    padding: 1vh;
+}
+
+#wait_alert .alert-box {
+	width: 26vh;
+    height: 14vh;
+    position: absolute;
+    top: 41vh;
+    left: 50%;
+    margin-left: -13vh;
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding: 1vh;
+	border-radius: 2vh;
+}
+#wait_alert .alert-icon {
+	width: 8vh;
+    height: 8vh;
+	text-align: left;
+	background-size: 100% 100%;
+	margin: 0 auto 2vh;
+}
+
+.wait-icon {
+	background: url("../img/rotat.gif") center;
+	/*animation:rotate 1000ms ease-out 0s infinite normal;*/
+}
+
+.success-icon {
+	background: url("../img/login_success.png") center;
+}
+
+.fail-icon {
+	background: url("../img/login_fail.png") center;
+}
+
+#wait_alert .alert-point {
+	width: 0;
+    height: 1.5rem;
+	text-align: left;
+	display: inline-block;
+}
+.alert-tip-value{
+	font-size: 1.4rem;
+}
+
+
+@keyframes rotate {
+	0%{
+		-webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+	}
+	100%{
+		-webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes rotate{
+	0%{
+		-webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: rotate( 0);
+        transform: rotate( 0);
+	}
+	100%{
+		-webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+	}
+}
+
+
+
+
+

@@ -1,0 +1,29 @@
+.error-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: none;
+}
+.error-title-img {
+    width: 50%;
+    margin: 26vh 25vw 5vh 25vw;
+}
+.error-msg {
+    text-align: center;
+    font-size: 1.75rem;
+    color: #777777;
+}
+.error-next {
+    width: 15rem;
+    height: 5rem;
+    border: 2px solid black;
+    margin: 5vh auto;
+    text-align: center;
+    line-height: 5rem;
+    background-color: #ef84ed;
+    border-radius: 1vw;
+    color: white;
+    font-size: 1.75rem;
+}

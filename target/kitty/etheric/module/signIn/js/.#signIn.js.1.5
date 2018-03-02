@@ -1,0 +1,130 @@
+/**
+ * 登入界面
+ */
+var signInInit = function () {
+    fadeInOutLoad(SignInPageLoad, null);
+}
+
+/**
+ * 登入页面初始加载内容
+ */
+var SignInPageLoad = function (params) {
+    // var obj = {"page":"signInInit","kitty_id":null,"kitty_type":null};
+    var obj = {
+        "page": "signInInit",
+        "paramJson": params
+    };
+    leftToRightArray.push(obj);
+    headerInit();
+    showSignHeaderLine(); //导航栏的选中登录显示下划线
+    $("#all-container").append(signInText);
+    $(".sign-in-container").append(loginText);
+    $(" .login-button").click(function () {
+        userLogin();
+    });
+
+    //登陆标签
+    $(".title-login .login-tab").click(function () {
+        if ($(this).hasClass("login-tab-selected")) {
+            return;
+        }
+        $(this).addClass('login-tab-selected');
+        $(".register-content").remove();
+        $(".sign-in-container").append(loginText);
+        $(" .login-button").click(function () {
+            userLogin();
+        });
+        $(".title-register .register-tab").removeClass('register-tab-selected');
+    });
+    //注册标签
+    $(".title-register .register-tab").click(function () {
+        if ($(this).hasClass("register-tab-selected")) {
+            return;
+        }
+        $(this).addClass('register-tab-selected');
+        $(".login-content").remove();
+        $(".sign-in-container").append(registerText);
+        $(".register-button").click(function () {
+            userRegister();
+        });
+        $(".title-login .login-tab").removeClass('login-tab-selected');
+    });
+}
+
+/**
+ * 用户登录
+ */
+var userLogin = function () {
+    var address = $(".login-address-input input").val();
+    if (!isNull(address)) {
+        return;
+    }
+    $.ajax({
+        url: Config.address + "userLogin",
+        type: "POST",
+        data: {
+            "address": address,
+        },
+        success: function (response) {
+            console.info(response);
+            if (response.error) {
+
+            }
+            userId = response.msg.id;
+            localStorage.setItem("userId", response.msg.id);
+            jumpToPage();
+        },
+        error: function (error) {
+            var text = nextJson(LText.Title, titleText(LText.SystemTitle), 1, [LText.Ok], [OK]);
+            promptText(text);
+            destory();
+        }
+    });
+};
+
+/**
+ * 用户注册
+ */
+var userRegister = function () {
+    var address = $(".register-address-input input").val();
+    var email = $(".register-email-input input").val();
+    var nickname = $(".register-nickname-input input").val();
+    $.ajax({
+        url: Config.address + "userRegister",
+        type: "POST",
+        data: {
+            "address": address,
+            "email": email,
+            "nickname": nickname,
+        },
+        success: function (response) {
+            console.info(response.msg);
+            userId = response.msg;
+            localStorage.setItem("userId", response.msg);
+            jumpToPage();
+        },
+        error: function (error) {
+            var text = nextJson(LText.Title, titleText(LText.SystemTitle), 1, [LText.Ok], [OK]);
+            promptText(text);
+            destory();
+        }
+    });
+}
+
+/**
+ * 登录、注册后跳转
+ */
+var jumpToPage = function () {
+    leftToRightArray.pop();
+    if (isNull(leftToRightArray[leftToRightArray.length - 1]) && leftToRightArray[leftToRightArray.length - 1].page == "kittyInit") {
+        var func = eval(leftToRightArray[leftToRightArray.length - 1].page);
+        var paramJson = leftToRightArray[leftToRightArray.length - 1].paramJson;
+        new func(paramJson);
+        leftToRightArray.pop();
+    } else {
+        var params = {
+            "kittyOwnerId": null,
+        };
+        myKittyInit(params);
+    }
+}

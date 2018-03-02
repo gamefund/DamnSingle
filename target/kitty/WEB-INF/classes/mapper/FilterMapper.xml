@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.c2engine.kitty.dao.FilterMapper">
+
+    <!-- 获取所有猫时的分页功能， 根据offset传值获取数据 -->
+    <select id="getAllKitties" parameterType="java.util.Map" resultType="java.util.Map">
+        <if test="offset == 0">
+            SELECT * FROM kitty LIMIT #{limit};
+        </if>
+
+        <if test="offset != 0">
+            SELECT * FROM kitty LIMIT #{offset}, #{limit};
+        </if>
+    </select>
+
+    <select id="getSaleKitties" resultType="java.util.Map">
+        SELECT
+        id, seller_id, kitty_id, type, start_time, end_time, duration, start_price, end_price
+        FROM
+        trade
+        WHERE
+        type = 1;
+    </select>
+
+    <!--查询或筛选在售、在交配狗-->
+    <select id="getKittiesByTypeAndYear" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT k.id, k.name, k.image_url, k.generation, k.color, k.cooldown_index, k.purr_count, k.is_fancy,
+        k.is_exclusive, k.fancy_type,k.is_ready, k.is_gestating, k.cooldown, k.cooldown_index,k.purr_count,
+        k.is_purred, k.created_at, k.owner_id, a.type, a.start_price,a.kitty_id, a.type, a.start_price,
+        a.start_time, a.end_time, a.end_price, a.duration, a.seller_id, a.id AS sellId, a.address, a.nickname, a.image
+        FROM
+        kitty AS k
+        INNER JOIN
+        (
+        SELECT
+        t.kitty_id, t.type, t.start_price, t.start_time, t.end_time, t.end_price, t.duration, t.seller_id, t.id,
+        u.address, u.nickname, u.image
+        FROM
+        trade AS t
+        INNER JOIN
+        user AS u
+        ON t.seller_id = u.id
+        WHERE
+        t.type = #{type}
+        ) AS a
+        ON k.id = a.kitty_id
+        INNER JOIN
+        (
+        SELECT atr.kitty_id FROM attribute AS atr
+        <where>
+            1 = 1
+            <if test="attr != 0">
+                AND atr.attr_1 = #{attr} OR atr.attr_2 = #{attr}
+                OR atr.attr_3 = #{attr} OR atr.attr_4 = #{attr}
+                OR atr.attr_5 = #{attr} OR atr.attr_6 = #{attr}
+                OR atr.attr_7 = #{attr} OR atr.attr_8 = #{attr}
+            </if>
+        </where>
+        )
+        AS attr
+        ON attr.kitty_id = k.id
+        <where>
+            1 = 1
+            <if test="fileType != 0">
+                AND
+                k.is_fancy = #{is_fancy}
+                AND
+                k.is_exclusive = #{is_exclusive}
+            </if>
+            <if test="userId != 0">
+                AND k.owner_id = #{userId}
+            </if>
+            <if test="kittyId != null and kittyId != 0">
+                AND k.id = #{kittyId}
+            </if>
+            <if test="kittyName != null">
+                AND k.name LIKE #{kittyName}
+            </if>
+            <if test="cooldown_index != null and cooldown_index != -1">
+                AND k.cooldown_index = #{cooldown_index}
+            </if>
+            <if test="choseGen != null and choseGen != -1">
+                AND k.generation = #{choseGen}
+            </if>
+            <choose>
+                <when test="created_at == 1">
+                    ORDER BY
+                    k.created_at DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="created_at == 2">
+                    ORDER BY
+                    k.created_at ASC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="price == 1">
+                    ORDER BY
+                    a.start_price ASC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="price == 2">
+                    ORDER BY
+                    a.start_price DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="purr_count == 1">
+                    ORDER BY
+                    k.purr_count DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <!--查询或筛选在售、在交配狗数量-->
+    <select id="getKittiesByTypeAndYearAllNum" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT count(k.id) AS num
+        FROM
+        kitty AS k
+        INNER JOIN
+        (
+        SELECT
+        t.kitty_id, t.type, t.start_price, t.start_time, t.end_time, t.end_price, t.duration, t.seller_id, t.id,
+        u.address, u.nickname, u.image
+        FROM
+        trade AS t
+        INNER JOIN
+        user AS u
+        ON t.seller_id = u.id
+        WHERE
+        t.type = #{type}
+        ) AS a
+        ON k.id = a.kitty_id
+        INNER JOIN
+        (
+        SELECT atr.kitty_id FROM attribute AS atr
+        <where>
+            1 = 1
+            <if test="attr != 0">
+                AND atr.attr_1 = #{attr} OR atr.attr_2 = #{attr}
+                OR atr.attr_3 = #{attr} OR atr.attr_4 = #{attr}
+                OR atr.attr_5 = #{attr} OR atr.attr_6 = #{attr}
+                OR atr.attr_7 = #{attr} OR atr.attr_8 = #{attr}
+            </if>
+        </where>
+        )
+        AS attr
+        ON attr.kitty_id = k.id
+        <where>
+            1 = 1
+            <if test="fileType != 0">
+                AND
+                k.is_fancy = #{is_fancy}
+                AND
+                k.is_exclusive = #{is_exclusive}
+            </if>
+            <if test="kittyId != null and kittyId != 0">
+                AND k.id = #{kittyId}
+            </if>
+            <if test="kittyName != null">
+                AND k.name LIKE #{kittyName}
+            </if>
+            <if test="cooldown_index != null and cooldown_index != -1">
+                AND k.cooldown_index = #{cooldown_index}
+            </if>
+            <if test="choseGen != null and choseGen != -1">
+                AND k.generation = #{choseGen}
+            </if>
+            <choose>
+                <when test="userId != 0">
+                    AND k.owner_id = #{userId}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <!--查询初代的筛选、排序-->
+    <select id="getKittiesByTypeAndGen" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT k.id, k.name, k.image_url, k.generation, k.color, k.cooldown_index, k.purr_count, k.is_fancy,
+        k.is_exclusive, k.fancy_type,k.is_ready, k.is_gestating, k.cooldown, k.cooldown_index,k.purr_count,
+        k.is_purred, k.created_at, k.owner_id, tt.type, tt.start_price,tt.kitty_id, tt.type, tt.start_price,
+        tt.start_time, tt.end_time, tt.end_price, tt.duration, tt.seller_id, tt.id AS sellId, cd.time,
+        u.address, u.nickname, u.image
+        FROM
+        kitty AS k
+        LEFT JOIN
+        (SELECT tr.kitty_id, MAX(tr.time) AS time FROM transaction_record AS tr WHERE tr.type = 2 GROUP BY tr.kitty_id)
+        AS cd
+        ON k.id = cd.kitty_id
+        LEFT JOIN
+        trade AS tt
+        ON k.id = tt.kitty_id
+        LEFT JOIN
+        user AS u
+        ON tt.seller_id = u.id
+        INNER JOIN
+        (
+        SELECT atr.kitty_id FROM attribute AS atr
+        <where>
+            1 = 1
+            <if test="attr != 0">
+                AND atr.attr_1 = #{attr} OR atr.attr_2 = #{attr}
+                OR atr.attr_3 = #{attr} OR atr.attr_4 = #{attr}
+                OR atr.attr_5 = #{attr} OR atr.attr_6 = #{attr}
+                OR atr.attr_7 = #{attr} OR atr.attr_8 = #{attr}
+            </if>
+        </where>
+        )
+        AS attr
+        ON attr.kitty_id = k.id
+        <where>
+            k.generation = 0
+            <if test="fileType != 0">
+                AND
+                k.is_fancy = #{is_fancy}
+                AND
+                k.is_exclusive = #{is_exclusive}
+            </if>
+            <if test="userId != 0">
+                AND k.owner_id = #{userId}
+            </if>
+            <if test="kittyId != null and kittyId != 0">
+                AND k.id = #{kittyId}
+            </if>
+            <if test="kittyName != null">
+                AND k.name LIKE #{kittyName}
+            </if>
+            <choose>
+                <when test="price == 1">
+                    ORDER BY
+                    tt.start_price ASC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="price == 2">
+                    ORDER BY
+                    tt.start_price DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="created_at == 1">
+                    ORDER BY
+                    k.created_at DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="created_at == 2">
+                    ORDER BY
+                    k.created_at ASC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="purr_count == 1">
+                    ORDER BY
+                    k.purr_count DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+            </choose>
+        </where>
+
+    </select>
+
+    <!--查询初代的筛选、排序的总数量-->
+    <select id="getKittiesByTypeAndGenAllNum" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT count(k.id) AS num
+        FROM
+        kitty AS k
+        LEFT JOIN
+        trade AS tt
+        ON k.id = tt.kitty_id
+        LEFT JOIN
+        user AS u
+        ON tt.seller_id = u.id
+        INNER JOIN
+        (
+        SELECT atr.kitty_id FROM attribute AS atr
+        <where>
+            1 = 1
+            <if test="attr != 0">
+                AND atr.attr_1 = #{attr} OR atr.attr_2 = #{attr}
+                OR atr.attr_3 = #{attr} OR atr.attr_4 = #{attr}
+                OR atr.attr_5 = #{attr} OR atr.attr_6 = #{attr}
+                OR atr.attr_7 = #{attr} OR atr.attr_8 = #{attr}
+            </if>
+        </where>
+        )
+        AS attr
+        ON attr.kitty_id = k.id
+        <where>
+            k.generation = 0
+            <if test="fileType != 0">
+                AND
+                k.is_fancy = #{is_fancy}
+                AND
+                k.is_exclusive = #{is_exclusive}
+            </if>
+            <if test="kittyId != null and kittyId != 0">
+                AND k.id = #{kittyId}
+            </if>
+            <if test="kittyName != null">
+                AND k.name LIKE #{kittyName}
+            </if>
+            <choose>
+                <when test="userId != 0">
+                    AND k.owner_id = #{userId}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <!--所有狗筛选、排序-->
+    <select id="getAllKittiesByType" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT k.id, k.name, k.image_url, k.generation, k.color, k.cooldown_index, k.purr_count, k.is_fancy,
+        k.is_exclusive, k.fancy_type,k.is_ready, k.is_gestating, k.cooldown, k.cooldown_index,k.purr_count,
+        k.is_purred, k.created_at,k.owner_id, tt.type, tt.start_price,tt.kitty_id, tt.type, tt.start_price,
+        tt.start_time, tt.end_time, tt.end_price, tt.duration, tt.seller_id, tt.id AS sellId, cd.time,
+        u.address, u.nickname, u.image
+        FROM
+        kitty AS k
+        LEFT JOIN
+        trade AS tt
+        ON k.id = tt.kitty_id
+        LEFT JOIN
+        (SELECT tr.kitty_id, MAX(tr.time) AS time FROM transaction_record AS tr WHERE tr.type = 2 GROUP BY tr.kitty_id
+        ORDER BY tr.time ASC) AS cd
+        ON k.id = cd.kitty_id
+        LEFT JOIN
+        user AS u
+        ON k.owner_id = u.id
+        INNER JOIN
+        (
+        SELECT atr.kitty_id FROM attribute AS atr
+        <where>
+            1 = 1
+            <if test="attr != 0">
+                AND atr.attr_1 = #{attr} OR atr.attr_2 = #{attr}
+                OR atr.attr_3 = #{attr} OR atr.attr_4 = #{attr}
+                OR atr.attr_5 = #{attr} OR atr.attr_6 = #{attr}
+                OR atr.attr_7 = #{attr} OR atr.attr_8 = #{attr}
+            </if>
+        </where>
+        )
+        AS attr
+        ON attr.kitty_id = k.id
+        <where>
+            1 = 1
+            <if test="fileType != 0">
+                AND
+                k.is_fancy = #{is_fancy}
+                AND
+                k.is_exclusive = #{is_exclusive}
+            </if>
+            <if test="userId != 0">
+                AND k.owner_id = #{userId}
+            </if>
+            <if test="kittyId != null and kittyId != 0">
+                AND k.id = #{kittyId}
+            </if>
+            <if test="kittyName != null">
+                AND k.name LIKE #{kittyName}
+            </if>
+            <if test="cooldown_index != null and cooldown_index != -1">
+                AND k.cooldown_index = #{cooldown_index}
+            </if>
+            <if test="choseGen != null and choseGen != -1">
+                AND k.generation = #{choseGen}
+            </if>
+            <choose>
+                <when test="price == 1">
+                    ORDER BY
+                    tt.start_price ASC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="price == 2">
+                    ORDER BY
+                    tt.start_price DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="created_at == 1">
+                    ORDER BY
+                    k.created_at DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="created_at == 2">
+                    ORDER BY
+                    k.created_at ASC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+                <when test="purr_count == 1">
+                    ORDER BY
+                    k.purr_count DESC
+                    limit #{indexStart}, #{limitNum}
+                </when>
+            </choose>
+        </where>
+
+    </select>
+
+    <!--所有狗筛选、排序数量-->
+    <select id="getAllKittiesByTypeAllNum" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT count(k.id) AS num
+        FROM
+        kitty AS k
+        LEFT JOIN
+        trade AS tt
+        ON k.id = tt.kitty_id
+        LEFT JOIN
+        user AS u
+        ON k.owner_id = u.id
+        INNER JOIN
+        (
+        SELECT atr.kitty_id FROM attribute AS atr
+        <where>
+            1 = 1
+            <if test="attr != 0">
+                AND atr.attr_1 = #{attr} OR atr.attr_2 = #{attr}
+                OR atr.attr_3 = #{attr} OR atr.attr_4 = #{attr}
+                OR atr.attr_5 = #{attr} OR atr.attr_6 = #{attr}
+                OR atr.attr_7 = #{attr} OR atr.attr_8 = #{attr}
+            </if>
+        </where>
+        )
+        AS attr
+        ON attr.kitty_id = k.id
+        <where>
+            1 = 1
+            <if test="fileType != 0">
+                AND
+                k.is_fancy = #{is_fancy}
+                AND
+                k.is_exclusive = #{is_exclusive}
+            </if>
+            <if test="kittyId != null and kittyId != 0">
+                AND k.id = #{kittyId}
+            </if>
+            <if test="kittyName != null">
+                AND k.name LIKE #{kittyName}
+            </if>
+            <if test="cooldown_index != null and cooldown_index != -1">
+                AND k.cooldown_index = #{cooldown_index}
+            </if>
+            <if test="choseGen != null and choseGen != -1">
+                AND k.generation = #{choseGen}
+            </if>
+            <choose>
+                <when test="userId != 0">
+                    AND k.owner_id = #{userId}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <!--搜索查询-->
+    <select id="searchKittyByInput" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT k.id, k.name, k.image_url, k.generation, k.color, k.cooldown_index, k.purr_count, k.is_fancy,
+        k.is_exclusive, k.fancy_type,k.is_ready, k.is_gestating, k.cooldown, k.cooldown_index,k.purr_count,
+        k.is_purred, k.created_at,k.owner_id, tt.type, tt.start_price,tt.kitty_id, tt.type, tt.start_price,
+        tt.start_time, tt.end_time, tt.end_price, tt.duration, tt.seller_id, tt.id AS sellId, cd.time,
+        u.address, u.nickname, u.image
+        FROM
+        kitty AS k
+        LEFT JOIN
+        trade AS tt
+        ON k.id = tt.kitty_id
+        LEFT JOIN
+        (SELECT tr.kitty_id, MAX(tr.time) AS time FROM transaction_record AS tr WHERE tr.type = 2 GROUP BY tr.kitty_id
+        ORDER BY tr.time ASC) AS cd
+        ON k.id = cd.kitty_id
+        LEFT JOIN
+        user AS u
+        ON k.owner_id = u.id
+        <where>
+            1 = 1
+            <if test="kittyId != null and kittyId != 0">
+                AND k.id = #{kittyId}
+            </if>
+            <if test="kittyName != null">
+                AND k.name LIKE #{kittyName}
+            </if>
+            <if test="1 == 1">
+                limit #{indexStart}, #{limitNum}
+            </if>
+        </where>
+    </select>
+    <select id="searchKittyByInputAllNum" resultType="long" parameterType="java.util.Map">
+        SELECT count(k.id) AS num
+        FROM
+        kitty AS k
+        LEFT JOIN
+        trade AS tt
+        ON k.id = tt.kitty_id
+        LEFT JOIN
+        (SELECT tr.kitty_id, MAX(tr.time) AS time FROM transaction_record AS tr WHERE tr.type = 2 GROUP BY tr.kitty_id
+        ORDER BY tr.time ASC) AS cd
+        ON k.id = cd.kitty_id
+        LEFT JOIN
+        user AS u
+        ON k.owner_id = u.id
+        <where>
+            1 = 1
+            <if test="kittyId != null and kittyId != 0">
+                AND k.id = #{kittyId}
+            </if>
+            <if test="kittyName != null">
+                AND k.name LIKE #{kittyName}
+            </if>
+            <if test="1 == 1">
+                limit #{indexStart}, #{limitNum}
+            </if>
+        </where>
+    </select>
+
+    <!--查询用户的操作记录-->
+    <select id="getActiveByUserId" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT
+        t.kitty_id,
+        t.time,
+        t.type,
+        k.name
+        FROM
+        transaction_record AS t
+        LEFT JOIN kitty AS k ON k.id = t.kitty_id
+        WHERE
+        t.operate_id = #{userId}
+        AND t.type IN (1, 2, 4, 5, 6, 7)
+        ORDER BY t.time DESC
+        <if test="1 == 1">
+            limit #{indexStart}, #{limitNum}
+        </if>
+    </select>
+
+    <!--查询用户的操作记录的总数-->
+    <select id="getActiveByUserIdNum" parameterType="java.util.Map" resultType="int">
+        SELECT
+        count(t.kitty_id)
+        FROM
+        transaction_record AS t
+        LEFT JOIN kitty AS k ON k.id = t.kitty_id
+        WHERE
+        t.owner_id = #{userId}
+        AND t.type IN (1, 2, 4, 5, 6, 7)
+    </select>
+</mapper>

@@ -1,0 +1,46 @@
+/*
+全局设置
+*/
+* {
+    font-size: 62.5%;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-family: Calibre, Arial, Helvetica, sans-serif;
+    font-size: 1.525rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+#all-container {
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-family: Calibre, Arial, Helvetica, sans-serif;
+    font-size: 1.525rem;
+    over-flow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}

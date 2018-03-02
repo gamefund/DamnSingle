@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+    <!--扫描目录-->
+    <context:component-scan base-package="com.c2engine.kitty"></context:component-scan>
+
+    <!-- 引入配置文件 -->
+
+    <!--数据库-->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"/>
+    </bean>
+    <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="driverClass" value="${driver}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <!-- 连接池中未使用的链接最大存活时间，单位是分，默认值：60，如果要永远存活设置为0  -->
+        <property name="idleMaxAgeInMinutes" value="${idleMaxAgeInMinutes}"/>
+        <!-- 检查数据库连接池中控线连接的间隔时间，单位是分，默认值：240，如果要取消则设置为0 -->
+        <property name="idleConnectionTestPeriod" value="${idleConnectionTestPeriod}"/>
+        <property name="idleMaxAge" value="${idleMaxAge}"/>
+        <!-- 每个分区最大的连接数 -->
+        <property name="maxConnectionsPerPartition" value="${maxConnectionsPerPartition}"/>
+        <!-- 每个分区最小的连接数 -->
+        <property name="minConnectionsPerPartition" value="${minConnectionsPerPartition}"/>
+        <!-- 分区数，默认值2，最小1，推荐3-4，视应用而定 -->
+        <property name="partitionCount" value="${partitionCount}"/>
+        <!-- 每次去拿数据库连接的时候一次性要拿几个，默认值：2 -->
+        <property name="acquireIncrement" value="${acquireIncrement}"/>
+        <!-- 缓存prepared statements的大小，默认值：0 -->
+        <property name="statementsCacheSize" value="${statementsCacheSize}"/>
+        <property name="releaseHelperThreads" value="${releaseHelperThreads}"/>
+    </bean>
+
+    <!-- 2 spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:mapper/*.xml</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <!--3. mybatis自动扫描加载Sql映射文件/接口 : MapperScannerConfigurer sqlSessionFactory basePackage:指定sql映射文件/接口所在的包（自动扫描）-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.c2engine.kitty.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!-- 4. 事务管理 : DataSourceTransactionManager dataSource:引用上面定义的数据源 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 5. 使用声明式事务transaction-manager：引用上面定义的事务管理器 -->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <!--开启spring可以识别@Scheduled注解-->
+    <task:annotation-driven/>
+</beans>

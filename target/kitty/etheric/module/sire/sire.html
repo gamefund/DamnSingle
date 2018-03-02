@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title>Etheric_Cat</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1"/>
+
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="./js/config.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="./js/util.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="./js/global.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="./js/main.js" charset="UTF-8"></script>
+    
+    <link rel="stylesheet" href="./css/main.css" type="text/css"/>
+    
+</head>
+<body>
+    <div class="kitties-head">
+        <div class="kitties-logo">
+            <div class="kitties-logo-img"></div>
+            <div class="kitties-logo-name">Kitties</div>
+        </div>
+        <div class="kitties-text">
+            <div class="kitties-sign-in"></div>
+            <div class="kitties-marketplace">Marketplace</div>
+        </div>
+    </div>
+    <div class="sire-container">
+        <div class="sire-content">
+            <div class="sire-top-title">Your two lovely Kitties will soon be parents!</div>
+            <div class="bill-detail">
+                <div class="spend-person">You</div>
+                <div class="spend-sum">￥0.045</div>
+                <div class="spend-exequt">Exequt</div>
+            </div>
+            <div class="sire-introduction">
+                <div class="left-text"><span class="kitty-up-name">G3-Swift-Quick Breed</span> will lay an egg</div>            
+                <div class="right-text"><span class="kitty-up-name">G5-Angle-Quick Breed</span> will be the sire</div>
+            </div>
+            <div class="sire-kitty">
+                <div class="left-kitty"></div>
+                <div class="love-heart fa fa-heart"></div>
+                <div class="right-kitty"></div>
+            </div>
+            <div class="kitty-detail">
+                <div class="left-kitty-detail">
+                    <div class="left-date-tube">G3-Swift-Quick Breed</div>
+                    <div class="left-kitty-gen">Kitty #10001·Gen3</div>
+                    <div class="left-kitty-name">Swift</div>
+                </div>
+                <div class="right-kitty-detail">
+                    <div class="right-date-tube">G5-Angle-Quick Breed</div>
+                    <div class="right-kitty-gen">Kitty #20003·Gen5</div>
+                    <div class="right-kitty-name">Angle</div>
+                </div>
+            </div>
+            <div class="bottom-introduction">
+                <div class="bottom-text">By clicking the button below, your two kitties will breed, and the offspring will belong to you once it's born</div>
+                <div class="bottom-warning">WARNING：If Metamask gives you a warning(e.g."Gas limit is set dangerously high"),hit reject,refresh the page,and try again</div>
+                <div class="ok-btn">OK,give them some privacy</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+</script>
+
+<style>
+    .kitties-head{
+        padding-top: 1vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 1vh;
+        border-bottom: 1px solid #ccc;
+        font-family: Calibre, Arial, Helvetica, sans-serif;
+    }
+
+    .kitties-logo{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 50vw;
+    }
+    .kitties-logo-img{
+        width: 8vw;
+        height: 8vw;
+        border: 1px solid #ea0ad2;
+        border-radius: 45px;
+        margin-right: 2vw;
+        background-image: url('./images/Swift.png');
+        background-size: 8vw 8vw;
+    }
+
+    .kitties-text{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        width: 50vw;
+    }
+    .kitties-sign-in{
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+    .kitties-marketplace{
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-left: 4vw;
+    }
+
+    
+
+    .sire-container{
+        margin-top: 3vh;
+        height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .sire-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Calibre, Arial, Helvetica, sans-serif;
+    }
+
+    .sire-top-title{
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    .bill-detail{
+        font-size: 0.7rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spend-sum{
+        margin: 1vh 8vw;
+    }
+
+    .sire-introduction{
+        margin-top: 4vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.7rem;
+    }
+
+    .left-text{
+        width: 48vw;
+        padding-left: 10vw;
+        padding-right: 4vw;
+        text-align: center;
+        line-height: 3vh;
+    }
+
+    .right-text{
+        width: 48vw;
+        padding-left: 4vw;
+        padding-right: 10vw;
+        text-align: center;
+        line-height: 3vh;
+    }
+    .kitty-up-name{
+        font-weight: bold;
+    }
+
+    .sire-kitty{
+        margin: 2.5vh auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-kitty{
+        height: 40vw;
+        width: 40vw;
+        margin-right: 2vw; 
+        /*border: 1px solid yellowgreen;*/
+        background-image: url('./images/Swift.png');
+        background-size: 40vw 40vw;
+        background-repeat: no-repeat;
+    }
+
+    .right-kitty{
+        height: 40vw;
+        width: 40vw;
+        margin-left: 2vw; 
+        /*border: 1px solid #ff0000;*/
+        background-image: url('./images/Angle.png');
+        background-size: 40vw 40vw;
+        background-repeat: no-repeat;
+    }
+
+    .love-heart{
+        background-image: url('');
+        height: 3vw;
+        width: 3vw;
+        border: 1px solid #ea0ad2;
+        margin: 0 -3vw;
+        z-index: 16;
+    }
+
+    .kitty-detail{
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.7rem;
+    }
+
+     .left-kitty-detail{
+        width: 48vw;
+        padding-left: 10vw;
+        padding-right: 4vw;
+        text-align: center;
+        line-height: 3vh;
+    }
+
+    .right-kitty-detail{
+        width: 48vw;
+        padding-left: 4vw;
+        padding-right: 10vw;
+        text-align: center;
+        line-height: 3vh;
+    }
+
+    .bottom-introduction{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5vh;
+    }
+
+    .bottom-text{
+        font-size: 0.82rem;
+        margin-left: 8vw;
+        margin-right: 8vw;
+        margin-bottom: 2vh;
+        text-align: center;
+    }
+
+    .bottom-warning{
+        font-size: 0.82rem;
+        margin: 3vh 8vw;
+        padding : 1vh 1vw;
+        text-align: center;
+        color: #ea0ad2;
+        border: 1px solid #ea0ad2;
+    }
+
+    .ok-btn{
+        font-size: 0.82rem;
+        color: #fff;
+        background-color: #ea0ad2;
+        border: 2px solid #3a3535;
+        padding: 1vh 1.5vw;
+    }
+
+</style>

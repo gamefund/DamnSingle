@@ -1,0 +1,93 @@
+/*body*/
+body{
+    font-family: "Arial", "Microsoft YaHei";
+}
+
+.activation-successful-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 50;
+    display: none;
+}
+
+.activation-successful-content {
+    background-color: white;
+    text-align: center;
+    /* height: 21rem; */
+    width: 100%;
+    bottom: 25%;
+    position: absolute;
+    color: rgb(60,60,60);
+}
+
+.successful-title {
+    font-size: 2rem;
+    margin: 45px 0 30px;
+}
+
+.successfull-text {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.activation-successful-confirm {
+    display: block;
+    font-size: 1.5rem;
+    background-color: rgb(185,4,0);
+    width: 60vw;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    color: white;
+    margin: 25px auto 50px;
+    text-decoration: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+.color-content{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+}
+.top-content{
+    width:100vw; 
+    height: 50vh; 
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background: -o-linear-gradient(top, rgba(138,0,0,1), #270404);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(138,0,0,1)), to(#270404));
+    background: -moz-linear-gradient(top, rgba(138,0,0,1), #270404);
+}
+.bottom-content{
+    width:100vw; 
+    height: 50vh; 
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background: -o-linear-gradient(top, #270404, #000);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#270404), to(#000));
+    background: -moz-linear-gradient(top, #270404, #000);
+}
+
+
+.jumptopage-tip .activation-successful-content {
+    height: 40%;
+    bottom: 25%;
+}
+.jumptopage-tip .activation-successful-content .successful-title {
+    margin: 16vh 0 8vh;
+}
+
+.jumptopage-tip .activation-successful-content .activation-successful-confirm {
+    width: 15vw;
+    min-width: 200px;
+}
+
+.body-en{
+    font-family: "Arial","Microsoft YAHEI","微软雅黑","黑体","Tahoma","sans-serif" !important;
+}
+
+.body{
+    font-family: "Microsoft YAHEI","微软雅黑","黑体","Arial","Tahoma","sans-serif" !important;
+}

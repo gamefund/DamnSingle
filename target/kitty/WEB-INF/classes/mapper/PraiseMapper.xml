@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.c2engine.kitty.dao.PraiseMapper">
+    <!--<insert id="insertPraiseData" parameterType="java.util.Map"  >-->
+    <!--INSERT  INTO-->
+    <!--transaction_record-->
+    <!--( operate_id, kitty_id, time, type, owner_id)-->
+    <!--VALUES-->
+    <!--(#{operate_id}, #{kitty_id}, now(), #{type}, #{owner_id})-->
+    <!--</insert>-->
+
+    <!--点赞后更新信息-->
+    <select id="updatePraiseData" parameterType="java.util.Map">
+        CALL updatePraiseData(#{operate_id}, #{kitty_id}, #{type}, #{owner_id});
+    </select>
+
+
+    <!--查询点赞情况-->
+    <select id="getPraisedKittyIdList" parameterType="java.util.Map" resultType="java.lang.Integer">
+
+        SELECT DISTINCT
+        kitty_id
+        FROM
+        transaction_record
+        WHERE
+        operate_id = #{operate_id} AND type = 3 AND kitty_id IN
+        <foreach collection="kittyIdList" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+
+    </select>
+
+</mapper>

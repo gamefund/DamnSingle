@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.c2engine.kitty.dao.TransactionMapper">
+
+    <update id="giftKitty" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        UPDATE kitty SET owner_id = #{rId} WHERE id = #{kId};
+    </update>
+
+    <insert id="insertGiftRecord" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO transaction_record
+        (operate_id, kitty_id, time, type, owner_id)
+        VALUES
+        (#{uId}, #{kId}, NOW(), #{type}, #{uId})
+    </insert>
+
+</mapper>

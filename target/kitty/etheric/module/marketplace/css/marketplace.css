@@ -1,0 +1,412 @@
+.marketplace-container {
+    position: absolute;
+    top: 10vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 1.2rem;
+    overflow: auto;
+}
+
+/*.marketplace-container .marketplace-classify{
+    display: flex;
+    margin: 0 auto;
+    width: 85%;
+    height: 8vw;
+    background-color: hotpink;
+    border-radius: 5vw;
+}
+.marketplace-container .classify-area{
+    flex: 1;
+    font-size: 1.4rem;
+    text-align: center;
+    height: 7vw;
+    line-height: 7vw;
+    margin: 0.6vw 0.5vw 0;
+    color: #fff;
+    background-color: hotpink;
+    border-radius: 5vw;
+}
+.marketplace-container .marketplace-classify .classify-title-active{
+    background-color: #fff;
+    border-radius: 5vw;
+    color: hotpink;
+}*/
+.marketplace-container .marketplace-classify {
+    display: flex;
+    padding: 0 7.5vw;
+    width: 85%;
+    height: 12vw;
+    /* background-color: hotpink; */
+    /* border-radius: 5vw; */
+    /* flex: 1 1 auto; */
+    justify-content: space-between;
+}
+
+.marketplace-container .classify-area {
+    /* flex: 1; */
+    font-size: 1.4rem;
+    /* text-align: center; */
+    height: 9vw;
+    line-height: 12vw;
+    display: inline-block;
+}
+
+.marketplace-container .marketplace-classify .classify-title-active {
+    border-bottom: 2px solid hotpink;
+}
+
+.marketplace-container .marketplace-search-filter {
+    display: flex;
+    height: 8vw;
+    margin: 2vh 7.5vw;
+}
+
+.marketplace-container .marketplace-search-filter .marketplace-search {
+    flex: 50%;
+    height: 7.6vw;
+    line-height: 7.6vw;
+    display: flex;
+    /*border: 1px solid hotpink;
+    border-radius: 3vw;*/
+}
+
+.marketplace-container .marketplace-search-filter .marketplace-filter {
+    flex: 50%;
+    text-align: right;
+    height: 7.6vw;
+    line-height: 7.6vw;
+    font-size: 1.4rem;
+    text-decoration: underline;
+}
+
+.marketplace-container .marketplace-search-filter .marketplace-filter:hover {
+    color: #989191;
+}
+
+.marketplace-container .marketplace-search-filter .marketplace-search input {
+    width: 100%;
+    height: 6.6vw;
+    line-height: 6.6vw;
+    font-size: 1.4rem;
+    padding-left: 5px;
+    outline: none;
+    border: none;
+    border-radius: 5vw;
+}
+
+.marketplace-container .marketplace-number-sortby {
+    display: flex;
+    height: 8vw;
+    margin: 2vh 7.5vw;
+}
+
+.marketplace-container .marketplace-number-sortby .searchOrFilter-number {
+    flex: 50%;
+    text-align: right;
+    height: 7.6vw;
+    line-height: 7.6vw;
+    font-size: 1.4rem;
+    color: #989191;
+}
+
+.marketplace-container .marketplace-number-sortby .searchOrFilter-number span {
+    font-size: 1.4rem;
+}
+
+.marketplace-container .marketplace-number-sortby .marketplace-sortby {
+    flex: 50%;
+    height: 7.6vw;
+}
+
+.marketplace-container .marketplace-number-sortby .marketplace-sortby select {
+    width: 100%;
+    height: 7.6vw;
+    line-height: 7.6vw;
+    border: 1px solid hotpink;
+    font-size: 1.4rem;
+    border-radius: 3vw;
+    padding-left: 8px;
+}
+
+.marketplace-container .marketplace-content-library {
+    margin-top: 4vw;
+}
+
+.marketplace-container .marketplace-content-library .library-container {
+    padding: 0 7.5vw;
+}
+
+.marketplace-container .marketplace-content-library .library-container .kitty-library {
+    /*margin-top: 6vw;*/
+}
+
+.kitty-library-item {
+
+}
+
+.kitty-library-item .kitty-item-container {
+
+}
+
+.kitty-library-item .kitty-item-container .kitty-item {
+    height: 85vw;
+    background-color: #ea927c;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.kitty-library-item .kitty-item-container .kitty-item .kitty-item-photo {
+    position: absolute;
+    height: 85vw;
+    width: 85%;
+}
+
+.kitty-item-newBadge {
+    float: left;
+    width: 12vw;
+    height: 12vw;
+}
+
+.kitty-item-newBadge .triangle-newBadge {
+    width: 0;
+    height: 0;
+    border-top: 12vw solid hotpink;
+    border-right: 12vw solid transparent;
+}
+
+.kitty-item-newBadge .triangle-newBadge .triangle-text {
+    filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7, M12=-0.7, M21=0.7, M22=0.7, SizingMethod="auto expand");
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 8.7vw;
+    left: 1.9vw;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 3vw;
+}
+
+.status-itemIcon {
+    width: 4vw;
+    height: 4vw;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    margin: auto 2vw auto 8vw;
+}
+
+.kitty-bottom {
+    width: 100%;
+    margin-bottom: 3.5vh;
+    display: flex;
+}
+
+.kitty-item-status {
+    position: relative;
+    top: 8%;
+    width: 46vw;
+    margin: 0 auto;
+    /*padding: 3vw;*/
+}
+
+.kitty-item-status .status-item {
+    height: 7vw;
+    line-height: 7vw;
+    margin: 0 auto;
+    border: 1px solid #fff;
+    background-color: #fff;
+    border-radius: 5vw;
+    text-align: center;
+    display: inline-flex;
+    width: 100%;
+}
+
+.kitty-item-status .status-item i {
+    width: 4vw;
+    height: 4vw;
+    /*margin: auto 3vw auto 6vw;*/
+    margin: auto 4% auto 4%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.kitty-item-status .status-item span {
+    font-size: 1.2rem;
+}
+
+.kitty-library-item .kitty-item-details {
+    flex: 80%;
+    height: 6vw;
+    line-height: 6vw;
+    margin-top: 2vw;
+}
+
+.kitty-library-item .kitty-item-details span {
+    font-size: 1.4rem;
+}
+
+.kitty-library-item .kitty-item-actions {
+    flex: 1;
+    height: 6vw;
+    line-height: 6vw;
+    margin-top: 2vw;
+    margin-right: 2vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.kitty-library-item .kitty-item-actions .kitty-item-actions-action {
+    display: flex;
+}
+
+.kitty-library-item .kitty-item-actions span {
+    font-size: 1.4rem;
+    height: 5vw;
+    line-height: 5vw;
+}
+
+.kitty-library-item .kitty-item-actions-number {
+    height: 6vw;
+    line-height: 6vw;
+}
+
+.filterArea-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(3, 3, 3, 0.6);
+    display: none;
+}
+
+.marketplace-filter-displayArea {
+    position: absolute;
+    top: 25vh;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 5vw 7.5vw;
+}
+
+.marketplace-filter-displayArea .filter-group {
+    margin: 2vw auto;
+}
+
+.marketplace-filter-displayArea .filter-group .filter-group-title {
+    font-weight: bold;
+    margin-bottom: 2vw;
+    font-size: 1.4rem;
+}
+
+.marketplace-filter-displayArea .filter-group .filter-group-content {
+    margin-left: 6vw;
+}
+
+.marketplace-filter-displayArea .filter-group .filter-group-content input {
+    width: 50%;
+    height: 3vh;
+    line-height: 3vh;
+    border: 1px solid hotpink;
+    font-size: 1.4rem;
+    padding-left: 3%;
+}
+
+.marketplace-filter-displayArea .filter-group .filter-group-content-flex {
+    margin-left: 6vw;
+    display: flex;
+}
+
+.marketplace-filter-displayArea .filter-group .filter-group-content .filter-group-content-left,
+.marketplace-filter-displayArea .filter-group-content-right {
+    flex: 1;
+}
+
+.filter-group-item {
+    font-size: 1.4rem;
+    height: 3vh;
+    line-height: 3vh;
+    text-decoration: underline;
+    margin: 2vw auto;
+}
+
+.filter-group-item-addclass {
+    color: hotpink;
+}
+
+.kitty-item-actions-icon {
+    width: 5vw;
+    height: 5vw;
+    margin: auto 1vw;
+    background-image: url(../../detail/img/zan.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: auto 1vw;
+    display: inline-block;
+}
+
+.marketplace-search-toSearch {
+    flex: 30%;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    display: none;
+}
+
+.marketplace-search-toCancle {
+    width: 10vw;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    display: none;
+    border: 1vw 5vw 1vw 1vw;
+    border-radius: 0vw 5vw 5vw 0vw;
+    border-left: 1px solid hotpink;
+}
+
+.market-gen-toSearch {
+    background-color: #fff;
+    outline: none;
+    border: none;
+}
+
+.market-gen-toCancle {
+    background-color: #fff;
+    outline: none;
+    border: none;
+}
+
+.marketplace-search-dog {
+    height: 7.6vw;
+    border: 1px solid hotpink;
+    border-radius: 3vw;
+}
+
+.search-dog-attr {
+    height: 7.6vw;
+    line-height: 7.6vw;
+    border-top: 1px solid hotpink;
+    display: none;
+    padding-left: 3vw;
+}
+
+.search-dog-attr-chose {
+    height: 7.6vw;
+    line-height: 7.6vw;
+    border-top: 1px solid hotpink;
+    display: none;
+    padding-left: 3vw;
+}
+
+.search-dog-attr-chose-iton {
+    width: 5vw;
+    height: 5vw;
+    margin: auto 2vw;
+}

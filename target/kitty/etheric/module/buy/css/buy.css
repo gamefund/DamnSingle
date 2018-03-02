@@ -1,0 +1,42 @@
+.toBuyKitty-main {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 12vh;
+    bottom: 0;
+    overflow-x: hidden;
+}
+
+.toBuyKittY-header-title {
+    height: 5vh;
+    line-height: 5vh;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.toBuyKittY-header-msg {
+    height: 5vh;
+    line-height: 5vh;
+    font-size: 1.5rem;
+    color: #9c9c9b;
+    margin-bottom: 2vh;
+}
+
+.toBuyKitty-floot {
+    padding: 4vh 7.5vw;
+    font-size: 1.5rem;
+    color: #9c9c9b;
+}
+
+.toBuyKitty-ok {
+    height: 8vh;
+    line-height: 8vh;
+    border-radius: 2vw;
+    border: 2px solid black;
+    background-color: #ea927c;
+    width: 45vw;
+    text-align: center;
+    margin: 4vh auto;
+    font-size: 1.7rem;
+    color: white;
+}

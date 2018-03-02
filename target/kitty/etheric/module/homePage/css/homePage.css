@@ -1,0 +1,272 @@
+.home-container {
+    position: absolute;
+    top: 8vh;
+    bottom: 0;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.home-head {
+    margin: 2vh 0 5vw 5vw;
+    display: flex;
+    background: url(../images/bg.png);
+    background-position: 4vw 0vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.home-head-text {
+    margin-top: 3vh;
+    flex: 35%;
+}
+
+.home-head-img {
+    margin-right: 3vw;
+    flex: 65%
+}
+
+.home-head-img-content {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.home-head-img .home-head-img-content img {
+    width: 22vw;
+    height: 25vw;
+}
+
+.home-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.home-title h1 {
+    font-size: 2.4rem;
+    color: #2a2825;
+    margin: 0.5vh;
+}
+
+.home-head-content {
+    font-size: 1.5rem;
+    margin-top: 3vh;
+    color: #989191;
+}
+
+.home-head-start-btn {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.start-btn {
+    width: 25vw;
+    height: 10vw;
+    border: 1px solid #0b0b0b;
+    background-color: #e37ad3;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    line-height: 10vw;
+}
+
+.home-body-content {
+    padding: 5vh 5vw;
+    background-color: #f3f1ee;
+    background-image: url("../images/background.svg");
+}
+
+.home-content-kitties {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 1vh 3vw;
+}
+
+.home-content-kitties-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#img1 {
+    background-color: rgb(255, 238, 238);
+}
+
+#img2 {
+    background-color: rgb(204, 246, 211);
+}
+
+#img3 {
+    background-color: rgb(199, 227, 253);
+}
+
+#img4 {
+    background-color: rgb(255, 238, 192);
+}
+
+#img5 {
+    background-color: rgb(232, 247, 205);
+}
+
+#img6 {
+    background-color: rgb(255, 238, 238);
+}
+
+.home-content-kitties-img .img-ether-diamond {
+    z-index: 1;
+}
+
+.home-content-kitties-img .img-ether-diamond img {
+    width: 15vw;
+    height: 15vw;
+    margin-bottom: -5vh;
+}
+
+.home-content-kitties-img .img-kitty-eth img {
+    width: 30vw;
+    height: 30vw;
+}
+
+.home-content-kitties-text {
+    margin-left: 2vw;
+}
+
+.home-content-kitties-text h2 {
+    font-size: 1.8rem;
+}
+
+.home-content-kitties-text p {
+    font-size: 1.5rem;
+    color: #989191;
+}
+
+.home-content-deal {
+    display: flex;
+    align-items: center;
+    margin-top: 5vh;
+    padding: 1vh 3vw;
+    text-align: center;
+    background-color: #fff;
+}
+
+.home-content-deal h2 {
+    font-size: 1.8rem;
+}
+
+.home-content-deal p {
+    font-size: 1.5rem;
+    color: #989191;
+}
+
+.home-content-sire {
+    margin-top: 5vh;
+}
+
+.home-content-sire-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-content-sire-img .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28vw;
+    height: 28vw;
+    background-color: #fff;
+}
+
+.home-content-sire-img .square img {
+    width: 28vw;
+    height: 28vw;
+}
+
+.home-content-sire-img .symbol {
+    margin: 0 -2vw;
+    z-index: 1;
+}
+
+.home-content-sire-img .kitty-heart img {
+    width: 6vw;
+    height: 6vw;
+}
+
+.home-content-sire-img .kitty-equals img {
+    width: 6vw;
+    height: 6vw;
+}
+
+.home-foot {
+    margin-top: 5vh;
+    padding: 0 8vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.home-foot-but {
+    font-size: 1.4rem;
+    color: #989191;
+}
+
+.home-foot-special {
+    margin-top: 2vh;
+    font-size: 1.5rem;
+    color: #2a2825;
+}
+
+.home-foot-start-btn {
+    margin-top: 2vh;
+    width: 25vw;
+    height: 10vw;
+    border: 1px solid #0b0b0b;
+    background-color: #e37ad3;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    line-height: 10vw;
+    margin-bottom: 5vh;
+}
+.foot-bottom {
+    background: #f3f1ee;
+    height: 11vh;
+}
+.foot-bottom div{
+    height: 3vh;
+    line-height: 7vh;
+    font-size: 0.5rem;
+    margin-bottom: 1vh;
+    color: #9c9c9c;
+    text-align: center;
+}
+.thank-says {
+    margin-top: 2vh;
+}
+.start-btn-talke {
+    display: flex;
+    display: -webkit-flex;
+    width: 40vw;
+    height: 6vw;
+    line-height: 6vw;
+}
+.start-btn-talke-icon {
+    width: 6vw;
+    height: 6vw;
+    background: url(../images/talk.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 2vw;
+}
+.start-btn-talke-href {
+    color: #989191;
+    font-size: 1.2rem;
+    flex: 73%;
+}

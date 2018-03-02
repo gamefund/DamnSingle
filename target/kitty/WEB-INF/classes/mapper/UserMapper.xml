@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.c2engine.kitty.dao.UserMapper">
+    <insert id="toLogin" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        user
+        (nickname, id, image)
+        VALUES
+        (#{nickname}, #{id}, #{image});
+    </insert>
+
+    <select id="userLogin" resultType="java.util.Map">
+        SELECT id
+        FROM `user`
+        WHERE address = #{address}
+    </select>
+
+    <insert id="userRegister" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT `user`
+        (address, nickname, image, email)
+        VALUES
+        (#{address}, #{nickname}, #{image}, #{email})
+    </insert>
+
+    <select id="getUserCount" resultType="int">
+        SELECT COUNT(id)
+        FROM `user`
+        WHERE address = #{address}
+    </select>
+
+    <select id="getUserInfo" resultType="java.util.Map">
+        SELECT address, nickname, image, email
+        FROM `user`
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateUserInfo" parameterType="java.util.Map">
+        UPDATE `user`
+         SET nickname = #{nickname}, image = #{image}, email = #{email}
+         WHERE id = #{uid}
+    </update>
+
+</mapper>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Etheric_Cat</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1"/>
+
+    <script type="text/javascript" src="C:/Users/liuxg/Desktop/etheric/js/jquery-3.2.1.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="C:/Users/liuxg/Desktop/etheric/js/config.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="C:/Users/liuxg/Desktop/etheric/js/util.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="C:/Users/liuxg/Desktop/etheric/js/global.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="C:/Users/liuxg/Desktop/etheric/js/main.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="./pagination/jquery.pagination.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="./js/marketplace.js" charset="UTF-8"></script>
+    <!--<script type="text/javascript" src="./pagination/pages.js" charset="UTF-8"></script>-->
+    
+    
+    <link rel="stylesheet" href="C:/Users/liuxg/Desktop/etheric/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/marketplace.css" type="text/css"/>
+    <link rel="stylesheet" href="./pagination/pagination.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="./pagination/page.css" type="text/css"/>-->
+    
+</head>
+
+<body>
+    <div class="marketplace-container">
+
+        <!--分类区-->
+        <div class="marketplace-classify">
+            <div class="classify-area for-sale classify-title-active">For Sale</div>
+            <div class="classify-area for-siring">Siring</div>
+            <div class="classify-area for-Generation-0">Gen 0</div>
+            <div class="classify-area for-all">All Kitties</div>
+        </div>
+        <!--搜索、筛选一行-->
+        <div class="marketplace-search-filter">
+            <!--搜索区-->
+            <div class="marketplace-search">
+                <input type="text" class="search-input-content " placeholder="Search Kitties">           
+            </div>
+            <!--筛选区-->
+            <div class="marketplace-filter">
+                Filter kitties
+            </div>
+        </div>
+        <!--筛选数量、排序一行-->
+        <div class="marketplace-number-sortby">
+            <!--排序区-->
+            <div class="marketplace-sortby">
+                <select class="filter-select" placeholder="sorting order">
+                    <option value="youngest-first">Youngest first</option>
+                    <option >Oldest first</option>
+                    <option >Cheapest first</option>
+                    <option >Most expensive first</option>
+                    <option >Most like</option>
+                </select>
+            </div>
+
+            <!--筛选后的数量-->
+            <div class="searchOrFilter-number">
+                <!--<span>共有</span>-->
+                <span class="cats-number">0</span>
+                <span>kitties</span>
+            </div>
+        </div>
+
+        
+        <!--内容显示区-->
+        <div class="marketplace-content-library">
+            <div class="library-container">
+                <div class="kitty-library">
+                    
+                    
+
+                </div>
+            </div>
+
+        </div>
+
+        <ul id="page" class="M-box" maxshowpageitem="5" pagelistcount="10"></ul>
+    </div>
+
+    <!--筛选关键字选择-->
+    <div class="marketplace-filter-displayArea">
+        <div class="filter-group">
+            <div class="filter-group-title">Kitty Type</div>
+            <div class="filter-group-content">
+                <div class="filter-group-item">Normal</div>
+                <div class="filter-group-item">Fancy</div>
+                <div class="filter-group-item">Exclusive</div>    
+            </div>
+            
+        </div>
+        <div class="filter-group">
+            <div class="filter-group-title">Generation</div>
+            <div class="filter-group-content">
+                <input type="number" step="1" min="0" placeholder="all" >
+            </div>
+        </div>
+        <div class="filter-group">
+            <div class="filter-group-title">Cooldown</div>
+            <div class="filter-group-content filter-group-content-flex">
+                <div class="filter-group-content-left">
+                    <div class="filter-group-item">Normal</div>
+                    <div class="filter-group-item">Fancy</div>
+                    <div class="filter-group-item">Exclusive</div>    
+                </div>
+                <div class="filter-group-content-right">
+                    <div class="filter-group-item">Normal</div>
+                    <div class="filter-group-item">Fancy</div>
+                    <div class="filter-group-item">Exclusive</div>    
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+
+</html>

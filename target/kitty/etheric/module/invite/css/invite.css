@@ -1,0 +1,210 @@
+.scroll-container {
+    position: absolute;
+    top: 8vh;
+    bottom: 0;
+    width: 100vw;
+    overflow-x: hidden;
+}
+#scroller{
+    margin-bottom: 0;
+}
+
+#get-qualified-top-half{
+    position: relative;
+    background-color: rgb(32,32,32);
+    text-align: center;
+    /*white-space: nowrap;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 18rem;
+    min-height: 30%;
+    background-image: url(../image/2.PNG);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.top-half-title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin: 13px auto 8px;
+    width: 80%;
+}
+.top-half-text{
+    font-size: 1.3rem;
+    color: rgb(221,219,219);
+    margin: 4px 0;
+    z-index: 1;
+    position: relative;
+    width: 80%;
+    line-height: 2rem;
+    color: #1d901d;
+    /*letter-spacing: 0.2rem;*/
+}
+.top-pull-down{
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    /*border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;*/
+    /*background-color: #202020;*/
+    background-position: center 71%;
+    background-size: 62%;
+    background-repeat: no-repeat;
+    color: #fff;
+    line-height: 40px;
+    font-size: 2rem;
+}
+
+.top-pull-down-icon {
+    width: 40px;
+    height: 40px;
+    background-image: url(../image/1.PNG);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#get-qualified-bottom-half{
+    padding: 0 6vw;
+    color: white;
+    /*white-space: nowrap;*/
+    background-image: url(../image/alread_bg.png);
+    background-size: 100%;
+    height: 58vh;
+    min-height: 70%;
+}
+.bottom-half-title{
+	font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10vh;
+    width: 70vw;
+    margin: 0 auto;
+    color: #c0f967;
+}
+.bottom-checkbox{
+	margin: 0 1vw 0 0;
+}
+.bottom-half-text{
+	/*white-space: nowrap;*/
+    margin-top: 1.5vh;
+    font-size: 1rem;
+}
+.bottom-input-title{
+    margin: 50px 0 8px;
+    font-size: 1.4rem;
+    width: 100%;
+}
+.bottom-input{
+    width: 100%;
+    height: 40px;
+    line-height: 3.5rem;
+    border-radius: 1vw;
+    border: 1px solid #9b9b9b;
+    outline: none;
+    font-size: 1.2rem;
+    text-indent: 1rem;
+}
+#confirm-activation{
+    width: 80%;
+    background-color: rgb(234, 149, 22);
+    border-radius: 10vw;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 10vh auto 14px;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+}
+#need-money{
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.warning-container{
+    position: absolute;
+    top: 40vh;
+    background-color: white;
+    text-align: center;
+    margin: auto;
+    left: 0;
+    right: 0;
+    font-size: 2rem;
+    width: 90vw;
+    height: 10vh;
+    line-height: 10vh;
+    border-radius: 5vw;
+}
+.warning-text{
+    position: absolute;
+    color: red;
+    display: none;
+    font-size: 1.2rem;
+}
+#imgBox
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+}
+#imgBox img{
+    width: 100%;
+}
+#share-tips{
+    font-size: 1.3rem;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 8vh;
+    line-height: 8vh;
+    color: #fff;
+    background-color: rgb(234, 149, 22);
+    z-index: 999;
+}
+
+#invited-name-input-tip
+{
+    width: 100%;
+    margin-top:0.5vh;
+    height: 20px;
+    line-height: 20px;
+}
+
+#code-date{
+    font-size: 1.2rem;
+    text-align: center;
+    color: #c1bfbf;
+    width: 68vw;
+    margin: 0 auto;
+}
+
+.fa-chevron-down:before{
+    color: rgb(234, 149, 22);
+}
+.blue-dividing-line {
+    background-color: rgb(234, 149, 22);
+    height: 5px;
+    width: 100%;
+    position: absolute;
+}
+.scroller-floor {
+    width: 720px;
+    height: 98px;
+    background-image: url(../image/floor.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}

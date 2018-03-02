@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.c2engine.kitty.dao.SireMapper">
+
+    <select id="getNearRelation" resultType="java.util.Map">
+        SELECT kitty.sire_id, kitty.matron_id FROM kitty WHERE id = #{sId} OR id = #{mId};
+
+    </select>
+
+    <insert id="makeChild" useGeneratedKeys="true" keyProperty="id" parameterType="map">
+      INSERT INTO
+        `kitty`
+        (image_url, generation, color, is_fancy, is_exclusive, fancy_type, owner_id, sire_id, matron_id, created_at)
+      VALUES
+        (#{image_url}, #{generation}, #{color}, #{is_fancy}, #{is_exclusive}, #{fancy_type}, #{owner_id}, #{sire_id}, #{matron_id}, NOW())
+    </insert>
+
+    <select id="getParentsGen" resultType="java.util.Map">
+
+        SELECT generation FROM kitty WHERE id = #{sId} OR id = #{mId};
+    </select>
+
+
+    <insert id="insertSireTrade" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO `trade` (`seller_id`, `kitty_id`, `type`, `start_time`, `end_time`, `duration`, `start_price`,
+        `end_price`)
+        VALUES ( #{seller_id}, #{kitty_id}, #{type}, #{start_time}, #{end_time}, #{duration}, #{start_price},
+        #{end_price})
+    </insert>
+
+    <insert id="insertSireTransaction" parameterType="java.util.Map">
+        INSERT INTO transaction_record
+        (operate_id, kitty_id, time, type, owner_id)
+        VALUES
+        (#{operate_id}, #{kitty_id}, now(), 2, #{owner_id})
+    </insert>
+
+    <select id="findSireTrades" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT
+        <choose>
+            <when test="columns != null">
+                <foreach collection="columns.keys" item="key" separator=",">
+                    `${key}`
+                </foreach>
+            </when>
+            <otherwise>
+                *
+            </otherwise>
+        </choose>
+        FROM trade
+        <where>
+            <if test="params.id != null and params.id != 0">
+                and `id`=#{params.id}
+            </if>
+            <if test="params.seller_id != null and params.seller_id != 0">
+                and `seller_id`=#{params.seller_id}
+            </if>
+            <if test="params.kitty_id != null and params.kitty_id != 0">
+                and `kitty_id`=#{params.kitty_id}
+            </if>
+            <if test="params.type != null and params.type != 0">
+                and `type`=#{params.type}
+            </if>
+            <if test="params.start_time != null and params.start_time != 0">
+                and `end_time`>= #{params.start_time}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateKittyStatus" parameterType="java.util.Map">
+        UPDATE `kitty`
+        <set>
+            <if test="cooldown!=null">
+                `cooldown` = #{cooldown},
+            </if>
+            <if test="cooldown_index!=null">
+                `cooldown_index` = #{cooldown_index},
+            </if>
+            <if test="is_ready!=null">
+                `is_ready` = #{is_ready},
+            </if>
+            <if test="is_gestating!=null">
+                `is_gestating` = #{is_gestating},
+            </if>
+        </set>
+        WHERE `id` = #{kitty_id}
+    </update>
+
+    <update id="updateImg" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        UPDATE kitty SET image_url = #{image_url} WHERE id = #{id}
+    </update>
+
+    <insert id="insertKittyAttributes" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        <selectKey resultType="int" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO `attribute` (`kitty_id`, `fancy_type`, `attr_1`, `attr_2`, `attr_3`, `attr_4`, `attr_5`, `attr_6`,
+        `attr_7`, `attr_8`)
+        VALUES ( #{kitty_id}, #{fancy_type}, #{attr_1}, #{attr_2}, #{attr_3}, #{attr_4}, #{attr_5}, #{attr_6},
+        #{attr_7}, #{attr_8})
+    </insert>
+
+    <select id="getGens" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT gens FROM kitty WHERE id = #{mId} OR id = #{sId};
+    </select>
+
+
+    <select id="getNotReleaseSiredKitties" resultType="java.util.Map">
+        SELECT id,name,generation,image_url,color,cooldown_index FROM kitty
+        WHERE id IN (SELECT id FROM kitty
+        WHERE id NOT IN (SELECT kitty_id FROM trade))
+        AND owner_id=#{owner_id}
+        AND is_ready = #{is_ready} AND is_gestating=#{is_gestating}
+        <if test="id!=0">AND id!= #{id}</if>
+    </select>
+
+    <select id="getKittyInfoById" resultType="java.util.Map">
+        SELECT k.id,k.name,k.generation,k.image_url,k.color,k.cooldown_index,t.start_price,
+                t.end_price,t.duration,t.start_time,t.end_time,t.type
+        FROM  kitty k JOIN trade t
+        ON k.id = t.kitty_id
+        WHERE k.id = #{kittyId}
+    </select>
+
+    <delete id="deleteKittyFromTrade" parameterType="java.util.Map">
+        DELETE FROM `trade` WHERE `kitty_id` = #{kitty_id} AND `type` = #{type}
+    </delete>
+
+    <insert id="insertSirlActive" parameterType="java.util.Map">
+        INSERT INTO transaction_record (operate_id, kitty_id, time, type, owner_id) VALUES(#{operate_id},#{kitty_id},
+        now(), 2, #{owner_id})
+    </insert>
+
+    <insert id="insertGens" parameterType="java.util.Map">
+        UPDATE kitty SET gens = #{gens} WHERE id = #{kitty_id}
+    </insert>
+
+    <insert id="insertNoGensKittyData" parameterType="java.util.Map" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO
+        kitty
+        (generation, owner_id, sire_id, matron_id, created_at)
+        VALUES
+        ( #{generation}, #{owner_id}, #{sire_id}, #{matron_id}, NOW() )
+    </insert>
+
+    <delete id="deleteSireTrade" parameterType="java.util.Map">
+        CALL cancelSireKitty(#{operate_id},#{kitty_id},#{type},#{owner_id});
+    </delete>
+
+    <update id="updateInfo" parameterType="java.util.Map" useGeneratedKeys="true">
+        UPDATE kitty SET color = #{color}, gens = #{gens}, is_fancy = #{is_fancy}, is_exclusive = #{is_exclusive} WHERE
+        id = #{kitty_id}
+    </update>
+
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.c2engine.kitty.dao.SearchMapper">
+
+    <!-- 获取当前猫的总数 -->
+    <select id="getKittiesCount" resultType="int">
+        SELECT count(id) AS cunt FROM kitty;
+    </select>
+
+    <select id="getSaleKittiesCount" resultType="int">
+        SELECT count(id) AS cunt FROM trade WHERE type = 1;
+    </select>
+
+    <select id="getSireKittiesCount" resultType="int">
+        SELECT count(id) AS cunt FROM trade WHERE type = 1;
+    </select>
+
+    <select id="getKittyInfo" resultType="map">
+        SELECT
+        <choose>
+            <when test="columns != null">
+                <foreach collection="columns.keys" item="key" separator=",">
+                    `${key}`
+                </foreach>
+            </when>
+            <otherwise>
+                *
+            </otherwise>
+        </choose>
+        FROM kitty
+        <where>
+            <if test="id != 0">
+                and `id`=#{id}
+            </if>
+            <if test="owner_id != 0">
+                and `owner_id`=#{owner_id}
+            </if>
+        </where>
+
+    </select>
+
+    <!-- 查询kitty是否存在 -->
+    <select id="selectKittyExist" parameterType="long" resultType="long">
+        SELECT count(id) FROM kitty WHERE id = #{kittyId};
+    </select>
+    <!-- 查询user是否存在 -->
+    <select id="selectUserExist" parameterType="long" resultType="long">
+        SELECT count(id) FROM user WHERE id = #{userId};
+    </select>
+    <!-- 查询kitty出售信息 -->
+    <select id="selectKittyTrade" parameterType="long" resultType="java.util.Map">
+        SELECT t.type, t.start_time, t.end_time, t.duration, t.start_price, t.end_price, k.is_ready
+        FROM trade AS t
+        INNER JOIN kitty AS k
+        ON t.kitty_id = k.id
+        WHERE kitty_id = #{kittyId};
+    </select>
+    <!--kitty购买后更新信息-->
+    <select id="updateKittyAndTrade" parameterType="java.util.Map">
+        CALL updateKittyAndTrade(#{userId}, #{kittyId}, #{ownerId});
+    </select>
+
+    <select id="getKittyOwner" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT owner_id FROM kitty WHERE kitty.id = #{id};
+    </select>
+
+</mapper>

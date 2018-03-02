@@ -1,0 +1,36 @@
+    .prompt-main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        height: 1000px;
+    }
+
+    .prompt-body {
+        width: 80%;
+        margin: 30vh auto;
+        border-radius: 4vw;
+        background-color: #EAE9EA;
+    }
+
+    .prompt-body div {
+        /*height: 6vh;*/
+        line-height: 8vh;
+        text-align: center;
+        font-size: 2rem;
+        border-top: 1px solid #bbb6b6;
+    }
+
+    .prompt-msg {
+        border-top: none !important;
+        font-size: 1.5rem !important;
+    }
+
+    .prompt-tital {
+        border-top: none !important;
+        font-size: 2rem !important;
+        line-height: 14vh !important;
+    }
