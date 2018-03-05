@@ -1,1 +1,3 @@
 A pet game based on NEO blockchain, and a salute to Cryptokitties. 2018 is Asian lunar year of dog. Players can buy, breed and sell digital dogs which stored in NEO block chain. Every dog is a unique and traded non changeable object in block chain.
+
+[![Join the chat at https://gitter.im/DamnSingleStudio/Lobby](https://badges.gitter.im/DamnSingleStudio/Lobby.svg)](https://gitter.im/DamnSingleStudio/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
